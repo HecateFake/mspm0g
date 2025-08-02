@@ -6,6 +6,8 @@
  */
 #include "pid.h"
 
+#include <math.h>
+
 /**
  * @brief 增量式PID控制算法处理函数
  *
@@ -76,9 +78,9 @@ static void positionalPidProcess(PID *obj, float currentValue)
     if (obj->ki != 0.0f)
     {
         if ((obj->ki * obj->integral) > obj->integralMax)
-            obj->integral = (obj->integralMax / obj->ki);
+            obj->integral = fabs(obj->integralMax / obj->ki);
         else if ((obj->ki * obj->integral) < -obj->integralMax)
-            obj->integral = -(obj->integralMax / obj->ki);
+            obj->integral = -fabs(obj->integralMax / obj->ki);
     }
 
     // 控制值计算

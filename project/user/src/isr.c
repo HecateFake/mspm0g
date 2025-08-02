@@ -92,8 +92,6 @@ void UART0_IRQHandler (void)
 
 void UART1_IRQHandler (void)
 {
-
-
 	switch(DL_UART_getPendingInterrupt(UART1))
 	{
 		case DL_UART_IIDX_TX:
@@ -102,17 +100,9 @@ void UART1_IRQHandler (void)
         }break;
 		case DL_UART_IIDX_RX:
         {
-
-
-            uart_callback_list[1](UART_INTERRUPT_STATE_RX, uart_callback_ptr_list[1]);
-					
-					 //wifi_uart_callback();
+			//tft180_show_int(0, 20, 0, 1);
             
-            uart_query_byte (cameraUart, uart_buffer);
-            parse_received_data(uart_buffer);
-			
-            wireless_module_uart_handler();                 // ??????????
-					
+            uart_rx_interrupt_handler();
         }break;
 
 		default:    break;

@@ -99,6 +99,9 @@
 #include "lowPassFilter.h"
 #include "camera.h"
 #include "loop.h"
+#include "imu.h"
+#include "menu.h"
+#include "trace.h"
 //===================================================用户自定义文件===================================================
 
 #endif
